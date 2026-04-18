@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
 
 interface HeroProps {
   translations: any;
@@ -154,14 +155,24 @@ const Hero: React.FC<HeroProps> = ({ translations }) => {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_40%,rgba(255,255,255,0)_0%,rgba(251,251,251,0.3)_100%)] z-1" />
 
       {/* Main Content Area */}
-      <div className="container mx-auto px-6 md:px-20 z-10 pointer-events-none relative">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="container mx-auto px-6 md:px-20 z-10 pointer-events-none relative"
+      >
         <div className="max-w-5xl">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] text-[#47474F] whitespace-pre-wrap tracking-tight">
             {displayText}
             <span className="inline-block w-[3px] h-[0.8em] bg-[#47474F] ml-1 cursor-blink align-middle"></span>
           </h1>
 
-          <div className="mt-6 md:mt-8 flex flex-row items-center gap-3 md:gap-4 text-lg md:text-2xl font-semibold text-[#47474F]/60">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-6 md:mt-8 flex flex-row items-center gap-3 md:gap-4 text-lg md:text-2xl font-semibold text-[#47474F]/60"
+          >
             <span className="text-[#47474F] whitespace-nowrap">{focusingOn}</span>
             <div className="h-[1.2em] overflow-hidden relative w-48 md:w-64">
               <div 
@@ -175,9 +186,9 @@ const Hero: React.FC<HeroProps> = ({ translations }) => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

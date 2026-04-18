@@ -1,5 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { revealVariants, containerVariants, itemVariants } from './Reveal';
 
 interface ContactProps {
   translations: any;
@@ -16,8 +18,8 @@ const Contact: React.FC<ContactProps> = ({ translations, isPage = false, onBack 
   const [copiedValue, setCopiedValue] = useState<string | null>(null);
 
   const contactDetails = [
-    { label: t.email, value: 'fhilia.wijaya@gmail.com', href: 'mailto:fhilia.wijaya@gmail.com', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
-    { label: t.whatsapp, value: '+6281119153153', href: 'https://wa.me/6281119153153', icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' },
+    { label: t.email, value: 'fhilia.wijaya@gmail.com', href: 'mailto:fhilia.wijaya@gmail.com', isCopy: false, icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+    { label: t.whatsapp, value: '+6281119153153', href: 'https://wa.me/6281119153153', isCopy: false, icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' },
     { label: t.wechat, value: '+8615201718399', href: null, isCopy: true, icon: 'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z' },
   ];
 
@@ -166,29 +168,40 @@ const Contact: React.FC<ContactProps> = ({ translations, isPage = false, onBack 
         }} />
 
         <div className="max-w-6xl mx-auto w-full relative z-10 space-y-16">
-          <div className="space-y-6 max-w-2xl text-center md:text-left mx-auto md:mx-0">
-            <div className="inline-block bg-[#47474F] text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-[0.2em] animate-in fade-in slide-in-from-top-4 duration-700">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={revealVariants}
+            className="space-y-6 max-w-2xl text-center md:text-left mx-auto md:mx-0"
+          >
+            <div className="inline-block bg-[#47474F] text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-[0.2em]">
               {t.connection}
             </div>
-            <h2 className="text-6xl md:text-8xl font-black text-[#47474F] leading-tight tracking-tighter animate-in fade-in slide-in-from-left-8 duration-700 delay-100">
+            <h2 className="text-6xl md:text-8xl font-black text-[#47474F] leading-tight tracking-tighter">
               {t.title}
             </h2>
-            <p className="text-2xl text-[#47474F]/50 font-medium leading-relaxed animate-in fade-in slide-in-from-left-8 duration-700 delay-200">
+            <p className="text-2xl text-[#47474F]/50 font-medium leading-relaxed">
               {t.subtitle}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 gap-4">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+            className="grid grid-cols-1 gap-4"
+          >
             {contactDetails.map((item, index) => (
-              <div 
+              <motion.div 
                 key={index} 
-                className={`group relative overflow-hidden rounded-[32px] bg-white border border-gray-100 p-8 md:p-12 transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-8 duration-700 ${item.isCopy ? 'cursor-pointer' : ''}`}
-                style={{ animationDelay: `${300 + index * 100}ms` }}
-                onClick={() => item.isCopy && handleCopy(item.value)}
+                variants={itemVariants}
+                className="group relative overflow-hidden rounded-[32px] bg-white border border-gray-100 p-8 md:p-12"
               >
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                   <div className="flex items-center gap-6">
-                    <div className="w-16 h-16 rounded-2xl bg-[#47474F]/5 flex items-center justify-center text-[#47474F] transition-colors group-hover:bg-[#47474F] group-hover:text-white">
+                    <div className="w-16 h-16 rounded-2xl bg-[#47474F]/5 flex items-center justify-center text-[#47474F]">
                       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
                       </svg>
@@ -197,38 +210,61 @@ const Contact: React.FC<ContactProps> = ({ translations, isPage = false, onBack 
                       <span className="text-sm font-bold text-[#47474F]/30 uppercase tracking-widest block mb-1">
                         {item.label}
                       </span>
-                      {item.href ? (
-                        <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-2xl md:text-3xl font-extrabold text-[#47474F] hover:text-[#B09E3A] transition-colors break-all">
-                          {item.value}
-                        </a>
-                      ) : (
-                        <div className="flex items-center gap-3">
-                          <span className="text-2xl md:text-3xl font-extrabold text-[#47474F] break-all">
+                      <div className="relative group/value inline-block">
+                        <AnimatePresence>
+                          {item.isCopy && copiedValue === item.value && (
+                            <motion.span 
+                              initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, scale: 0.9 }}
+                              className="absolute -top-10 left-0 text-[10px] font-bold uppercase tracking-widest bg-[#B09E3A] text-white px-3 py-1.5 rounded-lg shadow-lg z-20"
+                            >
+                              {t.copied}
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+                        
+                        {item.href ? (
+                          <a 
+                            href={item.href} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            onClick={() => item.isCopy && handleCopy(item.value)}
+                            className="text-2xl md:text-3xl font-extrabold text-[#47474F] hover:text-[#B09E3A] hover:brightness-125 transition-all duration-300 block hover:translate-x-1.5 hover:underline decoration-[#B09E3A]/30 underline-offset-8"
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <span 
+                            onClick={() => item.isCopy && handleCopy(item.value)}
+                            className="text-2xl md:text-3xl font-extrabold text-[#47474F] hover:text-[#B09E3A] hover:brightness-125 transition-all duration-300 block hover:translate-x-1.5 cursor-pointer hover:underline decoration-[#B09E3A]/30 underline-offset-8"
+                          >
                             {item.value}
                           </span>
-                          {item.isCopy && (
-                            <span className={`text-xs font-bold uppercase tracking-widest px-2 py-1 rounded bg-[#B09E3A] text-white transition-opacity duration-300 ${copiedValue === item.value ? 'opacity-100' : 'opacity-0'}`}>
-                              {t.copied}
-                            </span>
-                          )}
-                        </div>
-                      )}
+                        )}
+                      </div>
                     </div>
                   </div>
                   {item.isCopy && (
-                    <div className="hidden md:flex items-center gap-2 text-[#47474F]/20 group-hover:text-[#B09E3A] transition-colors">
-                      <span className="text-xs font-bold uppercase tracking-widest">{t.clickToCopy}</span>
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="hidden md:flex items-center gap-2 text-[#47474F]/10">
+                      <span className="text-[10px] font-bold uppercase tracking-widest">{t.clickToCopy}</span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
                       </svg>
                     </div>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-gray-100 animate-in fade-in duration-700 delay-700">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-gray-100"
+          >
             <div className="flex items-center gap-3 text-[#47474F]/40 font-bold uppercase text-[10px] tracking-widest">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -237,14 +273,19 @@ const Contact: React.FC<ContactProps> = ({ translations, isPage = false, onBack 
               {t.location}
             </div>
             {onBack && (
-              <button onClick={onBack} className="flex items-center gap-4 text-[#47474F]/60 hover:text-[#47474F] transition-colors font-bold text-sm uppercase tracking-widest group">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={onBack} 
+                className="flex items-center gap-4 text-[#47474F]/60 hover:text-[#47474F] transition-colors font-bold text-sm uppercase tracking-widest group"
+              >
                 <svg className="w-5 h-5 group-hover:-translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
                 </svg>
                 {t.backToHome}
-              </button>
+              </motion.button>
             )}
-          </div>
+          </motion.div>
         </div>
       </section>
     );
@@ -252,54 +293,81 @@ const Contact: React.FC<ContactProps> = ({ translations, isPage = false, onBack 
 
   // Render for the Home Page Section (Minimalist Screenshot Style)
   return (
-    <section id="contact" className="py-32 px-6 md:px-20 max-w-5xl mx-auto bg-white">
-      <div className="space-y-14">
+    <section id="contact" className="py-32 px-6 md:px-20 max-w-5xl mx-auto bg-white overflow-hidden">
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={revealVariants}
+        className="space-y-14"
+      >
         <h2 className="text-5xl md:text-[64px] font-extrabold text-[#47474F] tracking-tight">
           {t.title}
         </h2>
         
-        <div className="w-full flex flex-col pt-4">
+        <motion.div 
+          variants={containerVariants}
+          className="w-full flex flex-col pt-4"
+        >
           {contactDetails.map((item, index) => (
-            <div 
+            <motion.div 
               key={index} 
-              onClick={() => item.isCopy && handleCopy(item.value)}
-              className={`flex justify-between items-center py-5 ${index < contactDetails.length - 1 ? 'border-b-[1.5px] border-[#47474F]' : ''} ${item.isCopy ? 'cursor-pointer group' : ''}`}
+              variants={itemVariants}
+              className={`flex justify-between items-center py-5 ${index < contactDetails.length - 1 ? 'border-b-[1.5px] border-[#47474F]' : ''}`}
             >
               <span className="text-lg md:text-xl font-semibold text-[#47474F]">
                 {item.label}
               </span>
-              <div className="flex items-center gap-3">
-                {copiedValue === item.value && (
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#B09E3A] animate-in fade-in slide-in-from-right-2">
-                    {t.copied}
-                  </span>
-                )}
+              <div className="flex items-center gap-3 relative">
+                <AnimatePresence>
+                  {item.isCopy && copiedValue === item.value && (
+                    <motion.span 
+                      initial={{ opacity: 0, x: 10, scale: 0.9 }}
+                      animate={{ opacity: 1, x: 0, scale: 1 }}
+                      exit={{ opacity: 0, x: -10 }}
+                      className="absolute -left-20 text-[10px] font-bold uppercase tracking-widest text-[#B09E3A] whitespace-nowrap"
+                    >
+                      {t.copied}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+                
                 {item.href ? (
                   <a 
                     href={item.href} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="text-lg md:text-xl font-semibold text-[#47474F] hover:text-[#B09E3A] transition-colors"
+                    onClick={() => item.isCopy && handleCopy(item.value)}
+                    className="text-lg md:text-xl font-semibold text-[#47474F] hover:text-[#B09E3A] transition-all duration-300 hover:translate-x-1.5 hover:brightness-125 hover:underline decoration-[#B09E3A]/30 underline-offset-8"
                   >
                     {item.value}
                   </a>
                 ) : (
-                  <span className={`text-lg md:text-xl font-semibold text-[#47474F] transition-colors ${item.isCopy ? 'group-hover:text-[#B09E3A]' : ''}`}>
+                  <span 
+                    onClick={() => item.isCopy && handleCopy(item.value)}
+                    className="text-lg md:text-xl font-semibold text-[#47474F] hover:text-[#B09E3A] transition-all duration-300 cursor-pointer hover:translate-x-1.5 hover:brightness-125 hover:underline decoration-[#B09E3A]/30 underline-offset-8"
+                  >
                     {item.value}
                   </span>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="pt-8 flex items-center gap-3 text-[#47474F]/40 font-bold uppercase text-[10px] tracking-[0.25em]">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="pt-8 flex items-center gap-3 text-[#47474F]/40 font-bold uppercase text-[10px] tracking-[0.25em]"
+        >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
           </svg>
           {t.location}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

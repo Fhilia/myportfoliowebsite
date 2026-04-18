@@ -30,18 +30,18 @@ const projectsData: Project[] = [
     id: 'eng-solar-tracker',
     title: 'Automated Solar Tracking System',
     title_cn: '自动太阳能追踪系统',
-    description: 'Designed and implemented a solar tracking system using LDR sensors, servo motors, and Arduino to optimize panel orientation.',
+    description: 'Built an automated solar tracking system using LDR sensors and servo control to dynamically align the panel with the strongest light source, improving energy capture compared to a fixed-position setup.',
     description_cn: '使用 LDR 传感器、伺服电机和 Arduino 设计并实现了太阳能追踪系统，以优化面板方向。',
-    tags: ['Arduino', 'Embedded Systems', 'Control System', 'Renewable Energy', 'Sensors'],
+    tags: ['Arduino'],
     category: 'engineering',
     pdfUrl: '/case-studies/eng-solar-tracker.pdf',
     details: {
-      overview: 'Designed and built an automated solar tracking system that adjusts panel orientation based on light intensity to maximize energy exposure.',
+      overview: 'Built an automated solar tracking system using LDR sensors and servo control to dynamically align the panel with the strongest light source, improving energy capture compared to a fixed-position setup.',
       overview_cn: '设计并构建了一个自动太阳能追踪系统，根据光照强度调整面板方向，以最大限度地增加能量暴露。',
-      whatIDid: '• Integrated LDR sensors to detect light intensity differences\n• Programmed Arduino to process sensor input and control servo motors\n• Implemented control logic to continuously align the panel toward the strongest light source\n• Assembled mechanical structure and mounted components\n• Conducted efficiency testing to compare fixed vs. tracking performance',
+      whatIDid: '- Integrated LDR sensors to detect real-time light intensity differences\n- Programmed Arduino (C/C++) to process sensor data and control servo motors\n- Developed control logic to continuously track and align with the optimal light direction\n- Designed and assembled the mechanical structure and mounted electronic components\n- Conducted comparative testing between fixed and tracking configurations',
       whatIDid_cn: '• 集成了 LDR 传感器以检测光强差异\n• 编写 Arduino 程序处理传感器输入并控制伺服电机\n• 实现了控制逻辑，使面板持续对准最强光源\n• 组装机械结构并安装组件\n• 进行了效率测试，比较固定式与追踪式的性能',
-      tools: ['Arduino', 'Embedded C/C++', 'Sensor Integration', 'Servo Control', 'System Testing'],
-      outcome: 'Demonstrated improved energy alignment compared to a fixed-position panel, showcasing integration of hardware, software, and control logic.',
+      tools: ['Arduino'],
+      outcome: 'Improved energy alignment and demonstrated the effectiveness of integrating sensing, control logic, and mechanical design into a functional embedded system.',
       outcome_cn: '与固定位置面板相比，展示了改进的能量对齐效果，体现了硬件、软件和控制逻辑的集成。'
     }
   },
@@ -52,15 +52,15 @@ const projectsData: Project[] = [
     title_cn: 'linkain.id — 社交媒体运营与海报设计',
     description: 'Managed content planning and designed social posts to keep the brand consistent and improve engagement.',
     description_cn: '负责内容策划并设计社交媒体帖子，以保持品牌一致性并提高参与度。',
-    tags: ['Social Media', 'Content Planning', 'Graphic Design', 'Branding', 'Instagram'],
+    tags: ['Canva'],
     category: 'design',
     pdfUrl: '/case-studies/des-linkain.pdf',
     details: {
       overview: 'Managed the entire social media account independently, overseeing content strategy, visual production, and brand direction to create a professional yet engaging online presence.',
       overview_cn: '独立管理整个社交媒体账号，监督内容策略、视觉制作和品牌方向，打造专业且引人入胜的在线形象。',
-      whatIDid: '• Managed end-to-end content creation, including photoshoots, video editing, photo editing, and poster design\n• Developed a consistent visual identity using a defined color palette and typography system\n• Balanced professionalism and entertainment to improve engagement\n• Created educational carousel posts and relatable content to connect with audiences\n• Incorporated light humor and memes while maintaining brand consistency',
+      whatIDid: '• Managed end-to-end content creation, including photoshoots, video editing, photo editing, and poster design\n• Developed a consistent visual identity using a defined color palette and typography system\n• Balanced professionalism and entertainment to improve engagement\n• Created educational carousel posts and relatable content to connect with audiences\n• Prioritized consistency and brand voice while maintaining a high visual standard',
       whatIDid_cn: '• 管理端到端的内容创作，包括拍摄、视频编辑、照片编辑和海报设计\n• 使用定义的配色方案和排版系统开发了一致的视觉识别系统\n• 平衡专业性与娱乐性以提高参与度\n• 创作教育类轮播贴和引起共鸣的内容以连接受众\n• 在保持品牌一致性的同时融入轻松的幽默和梗图',
-      tools: ['Canva', 'Content Planning', 'Graphic Design'],
+      tools: ['Canva'],
       outcome: 'Improved engagement by making the account visually cohesive and entertaining, strengthening overall brand perception and professionalism.',
       outcome_cn: '通过使账号视觉统一且具有娱乐性，提高了用户参与度，增强了整体品牌认知度和专业性。'
     }
@@ -71,7 +71,7 @@ const projectsData: Project[] = [
     title_cn: 'GC 志愿者协会 — 微信内容创作者',
     description: 'Created and designed WeChat posts to promote volunteer events and communicate updates clearly.',
     description_cn: '创作并设计微信推送，以推广志愿者活动并清晰地传达更新信息。',
-    tags: ['Content Creation', 'Graphic Design', 'WeChat', 'Student Organization', 'Visual Communication'],
+    tags: ['Canva'],
     category: 'design',
     pdfUrl: '/case-studies/des-gc-volunteer.pdf',
     details: {
@@ -79,7 +79,7 @@ const projectsData: Project[] = [
       overview_cn: '作为 GC 志愿者协会的一员，我负责创作和设计微信推送，以推广志愿者活动并分享重要公告。',
       whatIDid: '• Designed visual layouts for WeChat articles and promotional posts\n• Structured content to make event details clear and easy to read\n• Coordinated with the team to gather event information and updates\n• Ensured consistent formatting and visual style across posts',
       whatIDid_cn: '• 为微信文章和推广帖子设计视觉布局\n• 组织内容结构，使活动详情清晰易读\n• 与团队协调收集活动信息和更新\n• 确保所有推送的格式和视觉风格保持一致',
-      tools: ['Content Design', 'Visual Layout', 'WeChat Article Editing', 'Team Coordination', 'Canva', 'Figma'],
+      tools: ['Canva'],
       outcome: 'Improved clarity of event communication and helped increase visibility of volunteer activities within the community.',
       outcome_cn: '提高了活动沟通的清晰度，并帮助提升了志愿者活动在社区内的知名度。'
     }
@@ -90,7 +90,7 @@ const projectsData: Project[] = [
     title_cn: '技术演示与海报设计',
     description: 'Designed structured slides and technical posters to present engineering concepts clearly and effectively.',
     description_cn: '设计结构化的演示文稿和技术海报，以清晰有效地展示工程概念。',
-    tags: ['Presentation Design', 'Technical Communication', 'Visual Layout', 'Academic Projects'],
+    tags: ['PowerPoint', 'Canva'],
     category: 'design',
     pdfUrl: '/case-studies/des-presentation.pdf',
     details: {
@@ -98,7 +98,7 @@ const projectsData: Project[] = [
       overview_cn: '为多个工程学科设计演示文稿和学术海报，专注于技术内容的清晰度、结构和视觉组织。',
       whatIDid: '• Structured complex engineering concepts into clear slide layouts\n• Designed visual hierarchy using spacing, typography, and diagrams\n• Created academic posters for lab reports and project presentations\n• Ensured consistency in formatting across different subjects',
       whatIDid_cn: '• 将复杂的工程概念组织成清晰的幻灯片布局\n• 利用间距、排版和图表设计视觉层级\n• 为实验报告和项目演示创作学术海报\n• 确保不同学科之间的格式一致性',
-      tools: ['Presentation Design', 'Visual Hierarchy', 'Technical Communication', 'PowerPoint', 'Keynote', 'Canva'],
+      tools: ['PowerPoint', 'Canva'],
       outcome: 'Improved clarity of technical communication and made complex material easier to understand during presentations and reports.',
       outcome_cn: '提高了技术沟通的清晰度，使复杂材料在演示和报告中更容易被理解。'
     }
@@ -109,7 +109,7 @@ const projectsData: Project[] = [
     title_cn: 'Adiparagata — 移动应用设计与开发',
     description: 'Designed and developed a mobile application using Figma and Flutter, focusing on user flow and interface clarity.',
     description_cn: '使用 Figma 和 Flutter 设计并开发了一款移动应用，专注于用户流程和界面清晰度。',
-    tags: ['Mobile App Design', 'UI/UX', 'Flutter', 'Figma', 'Interface Design'],
+    tags: ['Figma', 'Flutter'],
     category: 'design',
     pdfUrl: '/case-studies/des-adiparagata.pdf',
     details: {
@@ -117,7 +117,7 @@ const projectsData: Project[] = [
       overview_cn: '设计并构建了名为 Adiparagata 的移动应用，专注于结构化的用户流程、简洁的界面设计和一致的视觉元素。',
       whatIDid: '• Designed the full app interface and screen layouts in Figma\n• Created user flow and navigation structure\n• Implemented the app using Flutter\n• Ensured layout consistency, spacing, and responsive behavior\n• Refined typography and color usage for better readability',
       whatIDid_cn: '• 在 Figma 中设计了完整的应用界面和屏幕布局\n• 创建了用户流程和导航结构\n• 使用 Flutter 实现了该应用\n• 确保布局一致性、间距和响应式行为\n• 优化了排版和颜色使用以提高可读性',
-      tools: ['Figma', 'Flutter', 'UI/UX Design', 'User Flow Design', 'Mobile Interface Design'],
+      tools: ['Figma', 'Flutter'],
       outcome: 'Developed a functional mobile application with a clear structure and user-friendly interface, demonstrating both design planning and technical implementation.',
       outcome_cn: '开发了一款功能齐全、结构清晰且界面友好的移动应用，展示了设计规划和技术实现能力。'
     }
@@ -171,8 +171,8 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ onBack, lang, initialProjec
             className="text-xl text-[#47474F]/60 leading-relaxed"
           >
             {lang === 'en' 
-              ? 'A collection of my work spanning technical engineering and visual communication.' 
-              : '涵盖技术工程和视觉传达的作品集。'}
+              ? 'A selection of projects across engineering and design.' 
+              : '涵盖工程与设计的项目精选。'}
           </motion.p>
         </div>
 
@@ -300,21 +300,21 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void; lang: 'en'
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
         className="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[2rem] shadow-2xl relative z-10"
       >
-        <button 
-          onClick={onClose}
-          className="absolute top-6 right-6 p-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors z-20"
-        >
-          <X className="w-5 h-5 text-[#47474F]" />
-        </button>
-        
         <div className="p-8 md:p-12">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#47474F]/40 bg-[#47474F]/5 px-3 py-1 rounded-full">
+          {/* Header Row */}
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#47474F]/40 bg-[#47474F]/5 px-3 py-1 rounded-full whitespace-nowrap">
               {project.category === 'engineering' 
                 ? (lang === 'en' ? 'Engineering' : '工程技术') 
                 : (lang === 'en' ? 'Design' : '设计与沟通')}
             </span>
             <div className="h-[1px] flex-grow bg-[#47474F]/5" />
+            <button 
+              onClick={onClose}
+              className="p-2 bg-[#47474F]/5 hover:bg-[#47474F]/10 rounded-full transition-all group shrink-0"
+            >
+              <X className="w-4 h-4 text-[#47474F]/60 group-hover:text-[#47474F] transition-colors" />
+            </button>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#47474F] mb-8 tracking-tight">

@@ -31,9 +31,8 @@ const translations = {
       featured: 'Featured',
       projects: 'Projects',
       caseStudies: 'Case Studies',
-      headerDesc: 'Selected projects from my engineering and design work.',
       p1Title: 'Automated Solar Tracking System',
-      p1Desc: 'Designed and implemented a solar tracking system using LDR sensors, servo motors, and Arduino to optimize panel orientation.',
+      p1Desc: 'Built an automated solar tracking system using LDR sensors and servo control to dynamically align the panel with the strongest light source, improving energy capture compared to a fixed-position setup.',
       p2Title: 'Adiparagata — Mobile App Design & Development',
       p2Desc: 'Designed and implemented a mobile application using Figma and Flutter, focusing on structured user flow and interface clarity.',
       viewMore: 'View More'
@@ -75,7 +74,6 @@ const translations = {
       featured: '精选',
       projects: '项目',
       caseStudies: '案例研究',
-      headerDesc: '我的工程和设计工作的精选项目。',
       p1Title: '自动太阳能追踪系统',
       p1Desc: '使用 LDR 传感器、伺服电机和 Arduino 设计并实现了太阳能追踪系统，以优化面板方向。',
       p2Title: 'Adiparagata — 移动应用设计与开发',

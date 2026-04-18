@@ -1,5 +1,7 @@
 
 import React from 'react';
+import { motion } from 'motion/react';
+import { revealVariants, containerVariants, itemVariants, buttonVariants } from './Reveal';
 
 interface ProjectsProps {
   translations: any;
@@ -18,36 +20,46 @@ const Projects: React.FC<ProjectsProps> = ({ translations, onViewMoreClick, onPr
       }} />
 
       <div className="max-w-7xl mx-auto space-y-24 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={revealVariants}
+          className="flex flex-col md:flex-row md:items-end gap-8"
+        >
           <div className="space-y-4">
             <div className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">{t.caseStudies}</div>
             <h2 className="text-5xl md:text-7xl font-extrabold text-white leading-none tracking-tighter">
               {t.featured} <br/><span className="text-[#B09E3A]">{t.projects}</span>
             </h2>
           </div>
-          <div className="max-w-xs text-[#797D85] font-medium leading-relaxed">
-            {t.headerDesc}
-          </div>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 gap-12"
+        >
           {[
-            { id: 'eng-solar-tracker', title: t.p1Title, desc: t.p1Desc, tag: 'Hardware' },
-            { id: 'des-adiparagata', title: t.p2Title, desc: t.p2Desc, tag: 'Design' }
+            { id: 'eng-solar-tracker', title: t.p1Title, desc: t.p1Desc, tag: 'Engineering' },
+            { id: 'des-adiparagata', title: t.p2Title, desc: t.p2Desc, tag: 'Design & Communication' }
           ].map((proj, idx) => (
-            <div 
+            <motion.div 
               key={idx} 
+              variants={itemVariants}
               onClick={() => onProjectClick(proj.id)}
               className="group relative aspect-[4/5] md:aspect-[1/1] rounded-[60px] overflow-hidden bg-[#1A1A1A] border border-white/5 cursor-pointer"
             >
               <div className="absolute inset-0 bg-[#B09E3A]/20 scale-110 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-              <div className="absolute inset-0 flex flex-col justify-end p-12 z-20">
-                <div className="space-y-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-                  <div className="bg-white/10 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full w-fit uppercase tracking-widest">
+              <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 pb-16 md:pb-24 z-20">
+                <div className="space-y-4 transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500">
+                  <div className="bg-white/10 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full w-fit uppercase tracking-widest whitespace-nowrap">
                     {proj.tag}
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-white">{proj.title}</h3>
-                  <p className="text-gray-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 max-w-sm">
+                  <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight">{proj.title}</h3>
+                  <p className="text-gray-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 max-w-sm text-sm md:text-base">
                     {proj.desc}
                   </p>
                 </div>
@@ -57,23 +69,33 @@ const Projects: React.FC<ProjectsProps> = ({ translations, onViewMoreClick, onPr
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="text-center pt-12">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={buttonVariants}
+          className="text-center pt-12"
+        >
           <button 
             onClick={onViewMoreClick}
-            className="text-white font-bold group flex items-center gap-4 mx-auto hover:text-[#B09E3A] transition-colors"
+            className="text-white font-bold group flex items-center gap-6 mx-auto hover:text-[#B09E3A] transition-all duration-500 ease-out hover:scale-105 active:scale-95"
           >
-            <span className="text-2xl uppercase tracking-tighter">{t.viewMore}</span>
-            <div className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center group-hover:border-[#B09E3A] transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span className="text-2xl uppercase tracking-tighter transition-all duration-500 group-hover:tracking-widest">
+              {t.viewMore}
+            </span>
+            <div className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center group-hover:border-[#B09E3A] transition-all duration-500 group-hover:translate-x-3 group-hover:bg-[#B09E3A]/5 group-hover:shadow-[0_0_30px_rgba(176,158,58,0.3)] relative overflow-hidden">
+              <svg className="w-6 h-6 transform transition-transform duration-500 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
+              {/* Subtle sweep effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[sweep_1.5s_infinite] pointer-events-none" />
             </div>
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
